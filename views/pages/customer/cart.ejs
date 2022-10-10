@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<!--Includes the defined head-->
+<%- include('../../partials/head'); %>
+
+<body>
+	<!--Includes the defined header-->
+	<%- include('../../partials/custHeader'); %>
+
+    <main>
+        <h1 style="padding-left:5px">Cart</h1>
+
+        <div class="row container-fluid">
+            <div class="col-xl">
+                <table>
+                    <!--Checks if the cart is empty-->
+                    <% if(Object.keys(cart) != 0) { %>
+                        <tr>
+                            <th>Picture</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                        <!--Loops through and displays each item in the cart-->
+                        <% Object.keys(cart).forEach(function(item){ %>
+                            <tr>
+                                <td class="picture"><img src=<%= cart[item].imageLocation %> alt="Product Image" max-width="500px"  width="40%"; height="auto"></td>
+                                <td><%= cart[item].productName %></td>
+                                <td>x<%= cart[item].quantity %></td>
+                                <td>$<%= cart[item].productPrice %></td>
+                                <td>
+                                    <form action="/removeFromCart" method="post">
+                                        <input type="hidden" name="productID"
+                                            value="<%= cart[item].productID %>">
+                                        <input type="submit" value="Remove">
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                        <!--Displays checkout button and cart total with tax-->
+                        <tr>
+                            <td>
+                                <h6>Total including tax (7%): $<%= total.toFixed('2') %></h6>
+                                <form action="/checkout" method="post">
+                                    <input type="submit" value="Checkout">
+                                </form>
+                            </td>
+                        </tr>
+                    <% } else{ %>
+                        <tr>
+                            <h6>Cart is empty.</h6>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </main>
+
+	<!--Includes the defined footer-->
+	<%- include('../../partials/footer'); %>
+</body>
+</html>

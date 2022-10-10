@@ -1,0 +1,33 @@
+<header>
+    <!--Navbar START-->
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+        <a class="navbar-brand"><img src="../../images/logo.png" height="45" width="120%" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="collapsingNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">about</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/products/1">products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart">cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/welcome" style="font-weight:bold" onclick="message()">EXIT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--Navbar END-->
+
+    <script>
+        function message(){
+            alert('We hope to see you again soon!');
+        }
+    </script>
+</header>

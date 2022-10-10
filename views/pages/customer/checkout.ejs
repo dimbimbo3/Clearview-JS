@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<!--Includes the defined head-->
+<%- include('../../partials/head'); %>
+
+<body>
+	<!--Includes the defined header-->
+	<%- include('../../partials/custHeader'); %>
+
+	<main>
+		<h1 style="padding-left:0.25%">Checkout</h1>
+
+		<div class="container-fluid">
+			<form id="form" action ="/placeOrder" method ="post">
+                <div class="form-group">
+					<strong>Name</strong>
+				</div>
+				<div class="form-group row">
+					<label for="first" class="col-sm-2 col-form-label">First Name:</label>
+					<div class="col-sm-10">
+						<input type = "text" class = "form-control" name ="first" placeholder = "Bob" pattern="[A-Za-z]+" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="last" class="col-sm-2 col-form-label">Last Name:</label>
+					<div class="col-sm-10">
+						<input type = "text" class = "form-control" name ="last" placeholder = "McGee" pattern="[A-Za-z]+" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<strong>Address</strong>
+				</div>
+				<div class="form-group row">
+					<label for="street" class="col-sm-2 col-form-label">Street:</label>
+					<div class="col-sm-10">
+						<input type = "text" class = "form-control" name ="street" placeholder = "123 Anywhere Ave" pattern="[A-Za-z0-9\s]+" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="city" class="col-sm-2 col-form-label">City:</label>
+					<div class="col-sm-10">
+						<input type = "text" class = "form-control" name ="city" placeholder = "Some City" pattern="[A-Za-z\s]+" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="state" class="col-sm-2 col-form-label">State:</label>
+					<div class="col-sm-10">
+						<select class = "form-control" name ="state" required>
+                            <option value="AL" selected>(AL) Alabama</option>
+                            <option value="AK">(AK) Alaska</option>
+                            <option value="AZ">(AZ) Arizona</option>
+                            <option value="AR">(AR) Arkansas</option>
+                            <option value="CA">(CA) California</option>
+                            <option value="CO">(CO) Colorado</option>
+                            <option value="CT">(CT) Connecticut</option>
+                            <option value="DE">(DE) Delaware</option>
+                            <option value="DC">(DC) District Of Columbia</option>
+                            <option value="FL">(FL) Florida</option>
+                            <option value="GA">(GA) Georgia</option>
+                            <option value="HI">(HI) Hawaii</option>
+                            <option value="ID">(ID) Idaho</option>
+                            <option value="IL">(IL) Illinois</option>
+                            <option value="IN">(IN) Indiana</option>
+                            <option value="IA">(IA) Iowa</option>
+                            <option value="KS">(KS) Kansas</option>
+                            <option value="KY">(KY) Kentucky</option>
+                            <option value="LA">(LA) Louisiana</option>
+                            <option value="ME">(ME) Maine</option>
+                            <option value="MD">(MD) Maryland</option>
+                            <option value="MA">(MA) Massachusetts</option>
+                            <option value="MI">(MI) Michigan</option>
+                            <option value="MN">(MN) Minnesota</option>
+                            <option value="MS">(MS) Mississippi</option>
+                            <option value="MO">(MO) Missouri</option>
+                            <option value="MT">(MT) Montana</option>
+                            <option value="NE">(NE) Nebraska</option>
+                            <option value="NV">(NV) Nevada</option>
+                            <option value="NH">(NH) New Hampshire</option>
+                            <option value="NJ">(NJ) New Jersey</option>
+                            <option value="NM">(NM) New Mexico</option>
+                            <option value="NY">(NY) New York</option>
+                            <option value="NC">(NC) North Carolina</option>
+                            <option value="ND">(ND) North Dakota</option>
+                            <option value="OH">(OH) Ohio</option>
+                            <option value="OK">(OK) Oklahoma</option>
+                            <option value="OR">(OR) Oregon</option>
+                            <option value="PA">(PA) Pennsylvania</option>
+                            <option value="RI">(RI) Rhode Island</option>
+                            <option value="SC">(SC) South Carolina</option>
+                            <option value="SD">(SD) South Dakota</option>
+                            <option value="TN">(TN) Tennessee</option>
+                            <option value="TX">(TX) Texas</option>
+                            <option value="UT">(UT) Utah</option>
+                            <option value="VT">(VT) Vermont</option>
+                            <option value="VA">(VA) Virginia</option>
+                            <option value="WA">(WA) Washington</option>
+                            <option value="WV">(WV) West Virginia</option>
+                            <option value="WI">(WI) Wisconsin</option>
+                            <option value="WY">(WY) Wyoming</option>
+                        </select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="zip" class="col-sm-2 col-form-label">Zip Code:</label>
+					<div class="col-sm-10">
+						<input type = "text" class = "form-control" name ="zip" placeholder = "01234" minlength="5" maxlength="5" pattern ="[0-9]+" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="card" class="col-sm-2 col-form-label">Card Number:</label>
+					<div class="col-sm-10">
+						<input type = "text" class = "form-control" name ="card" placeholder = "#### #### #### ####" maxlength="19" pattern="\d{4} +\d{4} +\d{4} +\d{4}" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Place Order">
+				</div>
+			</form>
+		</div>
+	</main>
+
+	<!--Includes the defined footer-->
+	<%- include('../../partials/footer'); %>
+</body>
+
+<script>
+    var form = document.getElementById("form");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Your order has been placed. Thank you!");
+		form.submit();
+    });
+</script>
+</html>

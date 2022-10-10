@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<!--Includes the defined head-->
+<%- include('../../partials/head'); %>
+
+<body>
+	<!--Includes the defined header-->
+	<%- include('../../partials/empHeader'); %>
+
+    <main>
+        <div class="container-fluid">
+            <h1>Order List</h1>
+            <h6>(Logged in: <%= user.email %>)</h6>
+            <div class="table-responsive">
+                <!-- displays all orders -->
+                <table>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Order Date</th>
+                        <th>Order Total</th>
+                        <th>Customer Name</th>
+                        <th>Customer Address</th>
+                        <th>Customer ZIP Code</th>
+                    </tr>
+                    <% orders.forEach(function(order){ %>
+                        <tr>
+                            <td><%= order.orderID %></td>
+                            <td><%= order.orderDate %></td>
+                            <td><%= order.orderTotal %></td>
+                            <td><%= order.custFName+" "+order.custLName %></td>
+                            <td><%= order.custStreet+", "+order.custCity+", "+order.custState %></td>
+                            <td><%= order.custZip %></td>
+                            <!-- displays option to remove order if CEO is logged in -->
+                            <!-- but dont display any buttons if there are no orders-->
+                            <% if(user.deptID == 1){ %>
+                                <td>
+                                    <form action="/removeOrder" method="post">
+                                        <input type="hidden" name="orderID"
+                                            value="<%= order.orderID %>">
+                                        <input type="submit" value="Remove">
+                                    </form>
+                                </td>
+                            <% } %>
+                        </tr>
+                    <% }) %>
+                </table>
+            </div>
+        </div>
+    </main>
+
+	<!--Includes the defined footer-->
+	<%- include('../../partials/footer'); %>
+</body>
+</html>

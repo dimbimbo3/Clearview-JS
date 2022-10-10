@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<!--Includes the defined head-->
+<%- include('../../partials/head'); %>
+
+<body>
+	<!--Includes the defined header-->
+	<%- include('../../partials/empHeader'); %>
+
+    <main>
+        <div class="container-fluid">
+            <h1>Product List</h1>
+            <h6>(Logged in: <%= user.email %>)</h6>
+            <div class="table-responsive">
+                <!-- displays all products -->
+                <table>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Category ID</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Image (Location)</th>
+                    </tr>
+                    <% products.forEach(function(product){ %>
+                        <tr>
+                            <td><%= product.productID %></td>
+                            <td><%= product.categoryID %></td>
+                            <td><%= product.productName %></td>
+                            <td><%= product.price %></td>
+                            <td><%= product.imageLocation %></td>
+                        </tr>
+                        <% }) %>
+                    <!-- displays option to add a new product if CEO is logged in -->
+					<% if(user.deptID == 1){ %>
+						<tr>
+							<td><a class="btn custom" href="/newProduct">Add new product</a></td>
+						</tr>
+					<% } %>
+                </table>
+            </div>
+        </div>
+    </main>
+
+	<!--Includes the defined footer-->
+	<%- include('../../partials/footer'); %>
+</body>
+</html>

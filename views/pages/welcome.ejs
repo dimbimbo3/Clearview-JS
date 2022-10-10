@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<!--Includes the defined head-->
+<%- include('../partials/head') %>
+
+<body>
+	<!--Includes the defined header-->
+	<%- include('../partials/initHeader') %>
+
+	<main>
+		<div class="container-fluid" style="text-align:center">
+				<h1>Welcome!</h1>
+				<p><img src="images/initial.jpg" alt="Initial Image" width="45%" height="auto"></p>
+				<!--Links to either user view or employee view-->
+				<div style="padding-bottom: 1em">
+						<h6>Please select your role:</h6>
+						<a href="/about" class="btn btn-success" onclick=test()>Customer</a>
+						<a href="/login" class="btn btn-success">Employee</a>
+				</div>
+		</div>
+	</main>
+
+	<!--Includes the defined footer-->
+	<%- include('../partials/footer') %>
+</body>
+</html>

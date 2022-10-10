@@ -1,0 +1,33 @@
+<header>
+    <!--Navbar START-->
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+        <a class="navbar-brand"><img src="../../images/logo.png" height="45" width="120%" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="collapsingNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/empTable">Employees</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/prodTable">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/orderTable">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" style="font-weight:bold" onclick="message()">LOG OUT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--Navbar END-->
+
+    <script>
+        function message(){
+            alert('Logging out...');
+        }
+    </script>
+</header>

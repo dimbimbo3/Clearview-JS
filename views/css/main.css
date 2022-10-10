@@ -1,0 +1,33 @@
+header {
+	border-bottom: 2px solid;
+	padding-bottom: 1em;
+}
+footer {
+	border-top: 2px solid;
+	padding: 1em 1em;
+	text-align: right;
+}
+body {
+	background-color: wheat;
+}
+th {
+	padding: 10px 10px;
+}
+td {
+	padding: 10px 10px;
+}
+.picture{
+	padding-right: 0px;
+}
+.navbar{
+	background-color: brown;
+}
+.btn.custom{
+	border:1px solid #767676; 
+	color: black; 
+	background-color: #EFEFEF;
+}
+.btn.custom:hover{
+	border:1px solid #4F4F4F;
+	background-color: #E5E5E5;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!--Includes the defined head-->
+<%- include('../../partials/head'); %>
+
+<body>
+	<!--Includes the defined header-->
+	<%- include('../../partials/empHeader'); %>
+
+	<main>
+		<div class="container-fluid">
+			<h1>Employee List</h1>
+			<h6>(Logged in: <%= user.email %>)</h6>
+			<!--Displays any errors-->
+			<% for(let i=0; i < errors.length; i++){ %>
+				<h6 style="color:red"><%= errors[i] %></h6>
+			<% } %>
+			<div class="table-responsive">
+				<!-- displays all employees -->
+				<table>
+					<tr>
+						<th>Employee ID</th>
+						<th>Department ID</th>
+						<th>Email</th>
+						<th>Employee Name</th>
+						<!-- also displays salary, email, and password if CEO is logged in -->
+						<% if(user.deptID == 1){ %>
+							<th>Salary</th>
+						<% } %>
+					</tr>
+					<% employees.forEach(function(employee){ %>
+						<tr>
+							<td><%= employee.empID %></td>
+							<td><%= employee.deptID %></td>
+							<td><%= employee.email %></td>
+							<td><%= employee.fName + " " + employee.lName %></td>
+							<!-- also displays salary, email, and password if CEO is logged in -->
+							<% if(user.deptID == 1){ %>
+								<td><%= employee.salary %></td>
+								<!-- don't show fire next to CEO -->
+								<% if(employee.deptID != 1){ %>
+									<td>
+										<form action="/fireEmployee" method="post">
+											<input type="hidden" name="empID"
+												value="<%= employee.empID %>">
+											<input type="submit" value="Fire">
+										</form>
+									</td>
+								<% } %>
+							<% } %>
+						</tr>
+					<% }) %>
+					<!-- displays option to add a new employee if CEO is logged in -->
+					<% if(user.deptID == 1){ %>
+						<tr>
+							<td><a class="btn custom" href="/newEmployee">Add new employee</a></td>
+						</tr>
+					<% } %>
+				</table>
+			</div>
+		</div>
+	</main>
+
+	<!--Includes the defined footer-->
+	<%- include('../../partials/footer'); %>
+</body>
+</html>

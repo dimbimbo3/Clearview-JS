@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<!--Includes the defined head-->
+<%- include('../../partials/head') %>
+
+<body>
+	<!--Includes the defined header-->
+	<%- include('../../partials/custHeader') %>
+
+    <main>
+        <h1 style="padding-left:5px">Product Inventory</h1>
+
+        <div class="row container-fluid">
+            <div class="col-sm-3">
+            <!-- lists all categories -->
+                <h2>Categories</h2>
+                <nav>
+                    <ul>
+                        <% categories.forEach(function(category){ %>
+                            <li>
+                                <a href="/products/<%= category.categoryID %>"><%= category.categoryName %></a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md">
+                <!-- displays all products -->
+                <h2><%= selectedCat.categoryName %></h2>
+                <table>
+                    <tr>
+                        <th>Picture</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                    <% products.forEach(function(product){ %>
+                        <tr>
+                            <td class="picture"><img src=<%= product.imageLocation %> alt="Product Image" max-width="500px" width="35%" height="auto"></td>
+                            <td><%= product.productName %></td>
+                            <td>$<%= product.price %></td>
+                            <td>
+                                <form action="/addToCart" method="post">
+                                    <input type="hidden" name="productID"
+                                        value="<%= product.productID %>">
+                                    <input type="hidden" name="productName"
+                                        value="<%= product.productName %>">
+                                    <input type="hidden" name="productPrice"
+                                        value="<%= product.price %>">
+                                    <input type="hidden" name="imageLocation"
+                                        value="<%= product.imageLocation %>">
+                                    <input type="submit" value="Add">
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </table>
+            </div>
+        </div>
+    </main>
+
+	<!--Includes the defined footer-->
+	<%- include('../../partials/footer') %>
+</body>
+</html>
